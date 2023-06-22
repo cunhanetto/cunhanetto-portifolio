@@ -4,25 +4,10 @@ import { TechBadge } from "@/app/components/tech-badge"
 import Image from "next/image"
 import { Button } from "@/app/components/button"
 import { HiArrowNarrowRight} from 'react-icons/hi'
-import { TbBrandGithub, TbBrandLinkedin, TbBrandWhatsapp } from 'react-icons/tb'
 import { HomePageInfo } from "@/app/types/page-info"
 import { RichText } from "@/app/components/rich-text"
 import { CMSIcon } from "@/app/components/cms-icon"
 
-const MOCK_CONTACTS = [
-  {
-    url: 'https://github.com/cunhanetto',
-    icon: <TbBrandGithub/>
-  },
-  {
-    url: 'https://www.linkedin.com/in/antonio-l-da-cunha-neto-47b198239/',
-    icon: <TbBrandLinkedin/>
-  },
-  {
-    url: 'https://api.whatsapp.com/send?phone=5588996641801',
-    icon: <TbBrandWhatsapp/>
-  }
-]
 
 type HeroSectionProps = {
   homeInfo: HomePageInfo

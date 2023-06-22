@@ -1,21 +1,28 @@
+'use client'
+
 import { Link } from "@/app/components/link"
 import { TechBadge } from "@/app/components/tech-badge"
+import { Project } from "@/app/types/projects"
 import Image from "next/image"
 import { HiArrowNarrowRight } from "react-icons/hi"
 
-export const ProjectCard = () => {
+type ProjectCardProps = {
+  project: Project
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
   return(
     <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row">
-      <div className="w-full h-full">
+      <div className="w-full h-[200px] sm:h-[300px] lg:w-[420px] lg:min-h-full">
         <Image width={420} 
         height={304} 
-        src="https://media.graphassets.com/FRhUdgUQTHmLmwf9u0BA"
-        alt="Thumbnail do projeto Bookwise"
-        className="w-full h-[200px] sm:h-[300px] lg:w-[420px] lg:min-h-full object-cover rounded-lg"
+        src={project.thumbnail.url}
+        alt={`Thumbnail do projeto ${project.title}`}
+        className="w-full h-full object-cover rounded-lg"
         />
       </div>
 
-      <div>
+      <div className="flex-1 lg:py-[18px]">
         <h3 className="flex items-center gap-3 font-medium text-lg text-gray-50">
           <Image
             width={20}
@@ -23,21 +30,20 @@ export const ProjectCard = () => {
             alt=""
             src="/images/icons/project-title-icon.svg"
           />
-          BookWise
+          {project.title}
         </h3>
 
         <p className="text-gray-400 my-6">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, inventore enim. Explicabo repellat, expedita optio enim labore illo totam molestias consequuntur cupiditate quisquam. Consequatur culpa dolor, 
+          {project.shortDescription} 
         </p>
 
         <div className="flex gap-x-2 gap-y-3 flex-wrap mb-8 lg:max-w-[350px]">
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
+          {project.technologies.map(tech => (
+            <TechBadge key={`${project.title}-tech-${tech.name}`} name={tech.name} />
+          ))}
         </div>
-        <Link href="/project/book-wise">
-        Ver projeto
+        <Link href={`/projects/${project.slug}`}>
+          Ver projeto
         <HiArrowNarrowRight />
         </Link>
       </div>
