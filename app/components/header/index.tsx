@@ -24,7 +24,7 @@ export const Header = () => {
             width = {58}
             height = {49}
             src="/images/logo-dev.PNG"
-            alt="Logo CN dev"
+            alt="Logo CN dev portfolio"
           />
         </Link>
 
